@@ -1,0 +1,226 @@
+[
+  {
+    "id": "case_used_note",
+    "scope": "rendered_footnote",
+    "source": "main[^used]\n\n[^unused]: @hidden\n\n[^used]: @bob\n",
+    "tokens": [
+      "bob"
+    ]
+  },
+  {
+    "id": "case_emoji_boundary",
+    "scope": "emoji_boundary",
+    "source": "word:rocket:@bob",
+    "tokens": [
+      "bob"
+    ]
+  },
+  {
+    "id": "generated_208",
+    "scope": "emoji_boundary",
+    "source": ":rocket:@Bob",
+    "tokens": [
+      "bob"
+    ]
+  },
+  {
+    "id": "generated_209",
+    "scope": "emoji_boundary",
+    "source": ":rocket:@Bob @ann",
+    "tokens": [
+      "ann",
+      "bob"
+    ]
+  },
+  {
+    "id": "generated_210",
+    "scope": "emoji_boundary",
+    "source": ":rocket:@Bob\n\n@ann",
+    "tokens": [
+      "ann",
+      "bob"
+    ]
+  },
+  {
+    "id": "generated_211",
+    "scope": "emoji_boundary",
+    "source": ":rocket:@bo**b**",
+    "tokens": [
+      "bob"
+    ]
+  },
+  {
+    "id": "generated_212",
+    "scope": "emoji_boundary",
+    "source": ":rocket:@bo**b** @ann",
+    "tokens": [
+      "ann",
+      "bob"
+    ]
+  },
+  {
+    "id": "generated_213",
+    "scope": "emoji_boundary",
+    "source": ":rocket:@bo**b**\n\n@ann",
+    "tokens": [
+      "ann",
+      "bob"
+    ]
+  },
+  {
+    "id": "generated_214",
+    "scope": "emoji_boundary",
+    "source": ":rocket:&#64;Bob",
+    "tokens": [
+      "bob"
+    ]
+  },
+  {
+    "id": "generated_215",
+    "scope": "emoji_boundary",
+    "source": ":rocket:&#64;Bob @ann",
+    "tokens": [
+      "ann",
+      "bob"
+    ]
+  },
+  {
+    "id": "generated_216",
+    "scope": "emoji_boundary",
+    "source": ":rocket:&#64;Bob\n\n@ann",
+    "tokens": [
+      "ann",
+      "bob"
+    ]
+  },
+  {
+    "id": "generated_217",
+    "scope": "emoji_boundary",
+    "source": ":rocket:&commat;Bob",
+    "tokens": [
+      "bob"
+    ]
+  },
+  {
+    "id": "generated_218",
+    "scope": "emoji_boundary",
+    "source": ":rocket:&commat;Bob @ann",
+    "tokens": [
+      "ann",
+      "bob"
+    ]
+  },
+  {
+    "id": "generated_219",
+    "scope": "emoji_boundary",
+    "source": ":rocket:&commat;Bob\n\n@ann",
+    "tokens": [
+      "ann",
+      "bob"
+    ]
+  },
+  {
+    "id": "generated_223",
+    "scope": "image_boundary",
+    "source": "![alt](url)@Bob",
+    "tokens": [
+      "bob"
+    ]
+  },
+  {
+    "id": "generated_224",
+    "scope": "image_boundary",
+    "source": "![alt](url)@Bob @ann",
+    "tokens": [
+      "ann",
+      "bob"
+    ]
+  },
+  {
+    "id": "generated_225",
+    "scope": "image_boundary",
+    "source": "![alt](url)@Bob\n\n@ann",
+    "tokens": [
+      "ann",
+      "bob"
+    ]
+  },
+  {
+    "id": "generated_226",
+    "scope": "image_boundary",
+    "source": "![alt](url)@bo**b**",
+    "tokens": [
+      "bob"
+    ]
+  },
+  {
+    "id": "generated_227",
+    "scope": "image_boundary",
+    "source": "![alt](url)@bo**b** @ann",
+    "tokens": [
+      "ann",
+      "bob"
+    ]
+  },
+  {
+    "id": "generated_228",
+    "scope": "image_boundary",
+    "source": "![alt](url)@bo**b**\n\n@ann",
+    "tokens": [
+      "ann",
+      "bob"
+    ]
+  },
+  {
+    "id": "generated_229",
+    "scope": "image_boundary",
+    "source": "![alt](url)&#64;Bob",
+    "tokens": [
+      "bob"
+    ]
+  },
+  {
+    "id": "generated_230",
+    "scope": "image_boundary",
+    "source": "![alt](url)&#64;Bob @ann",
+    "tokens": [
+      "ann",
+      "bob"
+    ]
+  },
+  {
+    "id": "generated_231",
+    "scope": "image_boundary",
+    "source": "![alt](url)&#64;Bob\n\n@ann",
+    "tokens": [
+      "ann",
+      "bob"
+    ]
+  },
+  {
+    "id": "generated_232",
+    "scope": "image_boundary",
+    "source": "![alt](url)&commat;Bob",
+    "tokens": [
+      "bob"
+    ]
+  },
+  {
+    "id": "generated_233",
+    "scope": "image_boundary",
+    "source": "![alt](url)&commat;Bob @ann",
+    "tokens": [
+      "ann",
+      "bob"
+    ]
+  },
+  {
+    "id": "generated_234",
+    "scope": "image_boundary",
+    "source": "![alt](url)&commat;Bob\n\n@ann",
+    "tokens": [
+      "ann",
+      "bob"
+    ]
+  }
+]

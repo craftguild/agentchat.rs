@@ -1,0 +1,143 @@
+"AgentChat viewer contract v1. Every read is context-free and side-effect-free."
+schema { query: Query mutation: Mutation subscription: Subscription }
+
+"Explicit common-user actions; ordinary queries and subscriptions never join."
+type Mutation {
+  createChannel(requestId: ID!, name: String!): CreatedChannel!
+  postMessage(requestId: ID!, channel: String!, body: String!): PostedMessage!
+  replyMessage(requestId: ID!, rootId: ID!, body: String!): PostedMessage!
+}
+type CreatedChannel { channelId: ID!, name: String! }
+type PostedMessage { messageId: ID!, warnings: [PostWarning!]! }
+type PostWarning { code: String!, handle: String! }
+
+type Query {
+  project: Project!
+  channels(state: ChannelState = ACTIVE, after: String, limit: Int): ChannelPage!
+  "Retained native agents only; anonymous users never enter this roster."
+  agents(after: String, limit: Int): AgentPage!
+  "Current joined channel actors, including the nonreceiving anonymous user."
+  channelMembers(channel: String!, after: String, limit: Int): ActorPage!
+  "Complete immutable message and canonical independently paged recipient receipts."
+  message(messageId: ID!, after: String, limit: Int): MessageDetail!
+  roots(channel: String!, before: String, snapshot: CheckpointInput, limit: Int): MessageWindow!
+  pinnedRoot(channel: String!, rootId: ID!, snapshot: CheckpointInput): PinnedRoot!
+  replies(channel: String!, rootId: ID!, before: String, snapshot: CheckpointInput, limit: Int): MessageWindow!
+  changes(after: CheckpointInput!, through: CheckpointInput, limit: Int): ChangeBatch!
+}
+
+type Subscription {
+  "Replay complete retained changes, then await committed-head hints."
+  changes(after: CheckpointInput!): ChangeBatch!
+}
+
+"A namespace and retained-event identity anchor; sequences are decimal strings."
+input CheckpointInput { projectId: ID!, seq: String!, eventId: ID }
+type Checkpoint { projectId: ID!, seq: String!, eventId: ID }
+type Project { id: ID!, checkpoint: Checkpoint! }
+type Channel { id: ID!, name: String!, creationSeq: String! }
+enum ChannelState { ACTIVE ARCHIVED ALL }
+"Derived archive projection evaluated at the containing page's asOf time."
+type ChannelView {
+  id: ID!
+  name: String!
+  creationSeq: String!
+  lastConversationAt: String!
+  archiveAt: String!
+  archived: Boolean!
+  mandatory: Boolean!
+}
+type ChannelPage {
+  items: [ChannelView!]!
+  nextCursor: String
+  scanCursor: String!
+  head: String!
+  asOf: String!
+}
+enum ActorKind { AGENT USER }
+type Author { id: ID!, kind: ActorKind!, handle: String! }
+type Agent { id: ID!, kind: ActorKind!, handle: String!, joined: Boolean!, host: String! }
+type Actor { id: ID!, kind: ActorKind!, handle: String!, joined: Boolean!, host: String, chatId: String }
+type ActorPage {
+  items: [Actor!]!
+  nextCursor: String
+  scanCursor: String!
+  head: String!
+}
+type AgentPage {
+  items: [Agent!]!
+  nextCursor: String
+  scanCursor: String!
+  head: String!
+}
+
+"The canonical raw MessageView has no fabricated reply count or receipt aliases."
+type MessageRecord {
+  id: ID!
+  channelId: ID!
+  channel: String!
+  author: Author!
+  rootId: ID
+  threadId: ID!
+  creationSeq: String!
+  createdAt: String!
+  body: String!
+}
+enum DeliveryState { PENDING PROCESSING DELIVERED FAILED_TIMEOUT FAILED_LEFT DELIVERED_LATE }
+enum ReadKind { AUTOMATIC EXPLICIT }
+type DeliveryReceipt {
+  deliveryId: ID!
+  state: DeliveryState!
+  queuedAt: String!
+  processingStartedAt: String
+  deadlineAt: String
+  timedOutAt: String
+  deliveredAt: String
+  leftAt: String
+}
+type ReceiptRead { kind: ReadKind!, at: String! }
+type RecipientReceipt { recipient: Author!, delivery: DeliveryReceipt, reads: [ReceiptRead!]! }
+type ReceiptPage {
+  items: [RecipientReceipt!]!
+  nextCursor: String
+  scanCursor: String!
+  head: String!
+}
+type MessageDetail { message: MessageRecord!, receipts: ReceiptPage! }
+
+"Raw Markdown stays complete and unchanged; bodyHtml is computed separately."
+type Message {
+  id: ID!
+  channelId: ID!
+  channel: String!
+  author: Author!
+  rootId: ID
+  threadId: ID!
+  creationSeq: String!
+  createdAt: String!
+  body: String!
+  bodyHtml: String!
+  renderFallback: Boolean!
+  replyCount: String!
+}
+type MessageWindow {
+  snapshot: Checkpoint!
+  items: [Message!]!
+  nextBefore: String
+}
+type PinnedRoot { snapshot: Checkpoint!, root: Message! }
+enum ChangeKind { CHANNEL_CREATED MESSAGE_CREATED }
+type Change {
+  eventId: ID!
+  seq: String!
+  kind: ChangeKind!
+  channel: Channel
+  message: Message
+}
+type ChangeBatch {
+  after: Checkpoint!
+  scan: Checkpoint!
+  head: Checkpoint!
+  items: [Change!]!
+  hasMore: Boolean!
+}

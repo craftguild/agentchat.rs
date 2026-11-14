@@ -1,0 +1,104 @@
+name: Product CI
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  engineering:
+    name: ${{ matrix.target }} product checks
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: ubuntu-24.04
+            target: x86_64-unknown-linux-gnu
+          - runner: warp-macos-26-arm64-6x
+            target: aarch64-apple-darwin
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - name: Prepare Linux build storage
+        if: runner.os == 'Linux' && runner.environment == 'github-hosted'
+        run: |
+          df -h "$RUNNER_TEMP"
+          sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/.ghcup
+          df -h "$RUNNER_TEMP"
+      - name: Select isolated anonymous Cargo home
+        run: echo "CARGO_HOME=$RUNNER_TEMP/agentchat-cargo-anonymous" >> "$GITHUB_ENV"
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '26.0.0'
+      - name: Prepare pinned tools and anonymous dependencies
+        env:
+          EXPECTED_TARGET: ${{ matrix.target }}
+        run: |
+          rustup toolchain install 1.95.0 --profile minimal --component clippy,rustfmt
+          test "$(rustc -vV | sed -n 's/^host: //p')" = "$EXPECTED_TARGET"
+          npm install --global npm@11.12.1
+          make setup
+          GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_NOSYSTEM=1 cargo fetch --locked
+          npm ci --prefix web --ignore-scripts
+          cargo install tokei --version 15.0.0 --locked --root .quality-tools
+          cargo install cargo-deny --version 0.19.8 --locked
+          echo "$GITHUB_WORKSPACE/.quality-tools/bin" >> "$GITHUB_PATH"
+          echo "$CARGO_HOME/bin" >> "$GITHUB_PATH"
+          npx --prefix web playwright install --with-deps chromium
+          if [ "$RUNNER_OS" = Linux ]; then
+            # Use Ubuntu's existing application profile; keep Chrome's sandbox enabled.
+            if [ ! -x /opt/google/chrome/chrome ]; then
+              npx --prefix web playwright install chrome
+            fi
+            test -x /opt/google/chrome/chrome
+            /opt/google/chrome/chrome --version
+            echo "AGENTCHAT_NATIVE_BROWSER_BINARY=/opt/google/chrome/chrome" >> "$GITHUB_ENV"
+          fi
+      - name: Verify native browser startup before product checks
+        run: |
+          node --input-type=module <<'JS'
+          import { NativeBrowser } from './web/tests/browser/native-browser.ts';
+          const owned = new NativeBrowser();
+          try {
+            const browser = await owned.start(true);
+            console.log('Native browser ready:', browser.version());
+          } finally { await owned.close(); }
+          JS
+      - name: Whole Rust, Web, Mock and product contracts
+        run: make check PROFILE=debug
+      - name: Actual verified debug artifact
+        run: |
+          make build PROFILE=debug
+          make acceptance PROFILE=debug
+          python3 tools/web-checks.py
+      - name: Retain exact check receipts and failed attempts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: checks-${{ matrix.target }}
+          path: |
+            .craftguild/agentchat/runs/
+            .craftguild/agentchat/receipt.json
+            .craftguild/agentchat/prepared.json
+            web/test-results/
+            web/playwright-report/
+          if-no-files-found: warn
+          retention-days: 30
+  required:
+    name: Product checks required
+    if: ${{ always() }}
+    needs: [engineering]
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Require every native product job
+        run: test '${{ needs.engineering.result }}' = success

@@ -1,0 +1,110 @@
+{
+  "changes": {
+    "after": {
+      "eventId": null,
+      "projectId": "00000000-0000-0000-0000-000000000001",
+      "seq": "0"
+    },
+    "hasMore": false,
+    "head": {
+      "eventId": "00000000-0000-0000-0000-0000000003eb",
+      "projectId": "00000000-0000-0000-0000-000000000001",
+      "seq": "3"
+    },
+    "items": [
+      {
+        "channel": {
+          "creationSeq": "1",
+          "id": "00000000-0000-0000-0000-000000000002",
+          "name": "dev"
+        },
+        "eventId": "00000000-0000-0000-0000-000000000004",
+        "kind": "CHANNEL_CREATED",
+        "message": null,
+        "seq": "1"
+      },
+      {
+        "channel": null,
+        "eventId": "00000000-0000-0000-0000-0000000003eb",
+        "kind": "MESSAGE_CREATED",
+        "message": {
+          "author": {
+            "handle": "alice",
+            "id": "00000000-0000-0000-0000-000000000003",
+            "kind": "AGENT"
+          },
+          "body": "Hello **AgentChat**.",
+          "bodyHtml": "<p>Hello <strong>AgentChat</strong>.</p>",
+          "channel": "dev",
+          "channelId": "00000000-0000-0000-0000-000000000002",
+          "createdAt": "2026-10-24T00:00:00.000Z",
+          "creationSeq": "2",
+          "id": "00000000-0000-0000-0000-00000000000c",
+          "renderFallback": false,
+          "replyCount": "0",
+          "rootId": null,
+          "threadId": "00000000-0000-0000-0000-00000000000c"
+        },
+        "seq": "3"
+      }
+    ],
+    "scan": {
+      "eventId": "00000000-0000-0000-0000-0000000003eb",
+      "projectId": "00000000-0000-0000-0000-000000000001",
+      "seq": "3"
+    }
+  },
+  "channels": {
+    "asOf": "2026-10-24T00:00:00.000Z",
+    "head": "3",
+    "items": [
+      {
+        "archiveAt": "2026-11-23T00:00:00.000Z",
+        "archived": false,
+        "creationSeq": "1",
+        "id": "00000000-0000-0000-0000-000000000002",
+        "lastConversationAt": "2026-10-24T00:00:00.000Z",
+        "mandatory": true,
+        "name": "dev"
+      }
+    ],
+    "nextCursor": null,
+    "scanCursor": "3"
+  },
+  "project": {
+    "checkpoint": {
+      "eventId": "00000000-0000-0000-0000-0000000003eb",
+      "projectId": "00000000-0000-0000-0000-000000000001",
+      "seq": "3"
+    },
+    "id": "00000000-0000-0000-0000-000000000001"
+  },
+  "roots": {
+    "items": [
+      {
+        "author": {
+          "handle": "alice",
+          "id": "00000000-0000-0000-0000-000000000003",
+          "kind": "AGENT"
+        },
+        "body": "Hello **AgentChat**.",
+        "bodyHtml": "<p>Hello <strong>AgentChat</strong>.</p>",
+        "channel": "dev",
+        "channelId": "00000000-0000-0000-0000-000000000002",
+        "createdAt": "2026-10-24T00:00:00.000Z",
+        "creationSeq": "2",
+        "id": "00000000-0000-0000-0000-00000000000c",
+        "renderFallback": false,
+        "replyCount": "0",
+        "rootId": null,
+        "threadId": "00000000-0000-0000-0000-00000000000c"
+      }
+    ],
+    "nextBefore": null,
+    "snapshot": {
+      "eventId": "00000000-0000-0000-0000-0000000003eb",
+      "projectId": "00000000-0000-0000-0000-000000000001",
+      "seq": "3"
+    }
+  }
+}

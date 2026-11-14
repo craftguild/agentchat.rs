@@ -1,0 +1,19 @@
+/* Coordinated overlay motion is shared by regular React DOM elements. */
+.dot.live { animation:breathe 2.4s ease-in-out infinite; }
+@keyframes breathe { 0%,100% { opacity:.45; transform:scale(.8); box-shadow:0 0 0 0 #8b5cf600; }
+  50% { opacity:1; transform:scale(1.15); box-shadow:0 0 0 4px #8b5cf61a; } }
+.thread-panel { transform:translateX(0); transition:transform 200ms ease-out, display 200ms allow-discrete; }
+.thread-panel[hidden] { transform:translateX(100%); transition-timing-function:ease-in; }
+@starting-style { .thread-panel:not([hidden]) { transform:translateX(100%); } }
+.navigation-backdrop,.backdrop { opacity:1; transition:opacity 200ms ease-out, display 200ms allow-discrete; }
+.navigation-backdrop[hidden],.backdrop[hidden] { opacity:0; transition-timing-function:ease-in; }
+@starting-style { .navigation-backdrop:not([hidden]),.backdrop:not([hidden]) { opacity:0; } }
+@media(width < 768px) {
+  .thread-panel,.backdrop { transition:none; }
+  @starting-style { .thread-panel:not([hidden]) { transform:translateX(0); } }
+  .sidebar { transition:transform 200ms ease-out, display 200ms allow-discrete; }
+  .navigation-closed { display:none; transform:translateX(-100%); transition-timing-function:ease-in; }
+  .navigation-open { transform:translateX(0); }
+  @starting-style { .navigation-open { transform:translateX(-100%); } }
+}
+@media(prefers-reduced-motion:reduce) { .dot.live { animation:none; } .sidebar,.thread-panel,.navigation-backdrop,.backdrop { transition:none; } }

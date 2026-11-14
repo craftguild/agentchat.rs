@@ -1,0 +1,18 @@
+fragment CheckpointFields on Checkpoint { projectId seq eventId }
+fragment ChannelFields on Channel { id name creationSeq }
+fragment ChannelViewFields on ChannelView {
+  id name creationSeq lastConversationAt archiveAt archived mandatory
+}
+fragment AgentFields on Agent { id kind handle joined host }
+fragment ActorFields on Actor { id kind handle joined host chatId }
+fragment MessageFields on Message {
+  id channelId channel author { id kind handle } rootId threadId creationSeq
+  createdAt body bodyHtml renderFallback replyCount
+}
+fragment BatchFields on ChangeBatch {
+  after { ...CheckpointFields } scan { ...CheckpointFields }
+  head { ...CheckpointFields } hasMore
+  items {
+    eventId seq kind channel { ...ChannelFields } message { ...MessageFields }
+  }
+}

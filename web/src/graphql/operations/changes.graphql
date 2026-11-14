@@ -1,0 +1,3 @@
+query Changes($after: CheckpointInput!, $through: CheckpointInput!) {
+  changes(after: $after, through: $through) { ...BatchFields }
+}

@@ -1,0 +1,335 @@
+[
+  {
+    "name": "@apollo/client",
+    "version": "4.3.5",
+    "license": "MIT",
+    "integrity": "sha512-phA1B82EisAHIjT6irj9Lm4I5516pASExgACUl8pzcnq5eGmNjBhImDgjSRHRt18u1Hrqw0uP71jKJtEjV/Fag==",
+    "file": "node_modules/@apollo/client/LICENSE",
+    "sha256": "6d4568f2adac9fd90e85a2802a1e8ae25f707af9243cd5a8843402399b92b3c4",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "@fontsource/ibm-plex-mono",
+    "version": "5.3.0",
+    "license": "OFL-1.1",
+    "integrity": "sha512-eTgnZjZEGk1QtD3ZstF+Vclo2HLAni8YMy34/DxllwZvyz1lR/1RF/xTiAquOBO7MvqBx8D2Ig2WCPMVfdZu7Q==",
+    "file": "node_modules/@fontsource/ibm-plex-mono/LICENSE",
+    "sha256": "23b0a9d0c6d3f140a0b77e483c5cfa6bba574325ef5cb189ed9f2fec4884533f",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "@fontsource/ibm-plex-sans",
+    "version": "5.3.0",
+    "license": "OFL-1.1",
+    "integrity": "sha512-CbE4CbbEEZJX860XyUiRpsksXIQR8Rp2XDva2VO53NJox9tVNtusrysd2x5YkUEY3ErQ66W1IiiQL8/wihhw5w==",
+    "file": "node_modules/@fontsource/ibm-plex-sans/LICENSE",
+    "sha256": "d0283623ef57e722fd0eb688a8041589670c608ab780cd3612d06ba6f153d3fd",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "@graphql-typed-document-node/core",
+    "version": "3.2.0",
+    "license": "MIT",
+    "integrity": "sha512-mB9oAsNCm9aM3/SOv4YtBMqZbYj10R7dkq8byBqxGY/ncFwhf2oQzMV+LCRlWoDSEBJ3COiR1yeDvMtsoOsuFQ==",
+    "file": "node_modules/@graphql-typed-document-node/core/LICENSE",
+    "sha256": "37431eb2e9e265d8d9a67161ba96394537fbc164ef546bf2140238a582cd59b2",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "@hookform/resolvers",
+    "version": "6.0.2",
+    "license": "MIT",
+    "integrity": "sha512-e2dqUOlaGuirKVOd/iZWk/Yg5zeaGw7t0hSc3LzxL3o7eZGwZkTyEbBL8H52m0wRKEsNLWoMGOiXGHbPHTXlEQ==",
+    "file": "node_modules/@hookform/resolvers/LICENSE",
+    "sha256": "e8eeb472f0a5889c2c51625b86a3f9b8630680adb9f49a125352e2e426392780",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "@remix-run/route-pattern",
+    "version": "0.22.1",
+    "license": "MIT",
+    "integrity": "sha512-czdGJWh09Lapvcqt7Vb09KlrU2PhRJ8xQaI+AItTuD9aDJ5MAgxnS38lnys6Ll+6RJEqPiaUqTwIQhVLwFvv+w==",
+    "file": "node_modules/@remix-run/route-pattern/LICENSE",
+    "sha256": "d6baf87f30d13d2d7770c18c858e7a31fa7ceede4bc9469a50f03dbafe455cb4",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "@standard-schema/utils",
+    "version": "0.3.0",
+    "license": "MIT",
+    "integrity": "sha512-e7Mew686owMaPJVNNLs55PUvgz371nKgwsc4vxE49zsODpJEnxgxRo2y/OKrqueavXgZNMDVj3DdHFlaSAeU8g==",
+    "file": "node_modules/@standard-schema/utils/LICENSE",
+    "sha256": "9cf2166507311f427e083ef7671da566949391cb745789abcff8bd43ac26d1f1",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "@tanstack/react-virtual",
+    "version": "3.14.24",
+    "license": "MIT",
+    "integrity": "sha512-JoNsByXR68fNlB2NZuT3bSk8uYBxuOWl6YNJ7djTrw7IMwBWuaOtffxj/TcuMa80WmL6byb+80i1NEM/8Qmocw==",
+    "file": "node_modules/@tanstack/react-virtual/LICENSE",
+    "sha256": "a405ee70c632bb938acb7ac5f210e814409b3760ea9d2329d8ed8ffcfd11a0e7",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "@tanstack/virtual-core",
+    "version": "3.19.9",
+    "license": "MIT",
+    "integrity": "sha512-Syiaf3w69dFyYv4o2mqJ1/2VtBJTNq5Hu5cVXfnzOuJKFpUojukQR13ZW+5NvdMJM7GFHeNPmveMNhoIubiFyA==",
+    "file": "node_modules/@tanstack/virtual-core/LICENSE",
+    "sha256": "a405ee70c632bb938acb7ac5f210e814409b3760ea9d2329d8ed8ffcfd11a0e7",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "@types/node",
+    "version": "26.6.5",
+    "license": "MIT",
+    "integrity": "sha512-uMzsv9stDdofIZBx4UGh4Z9ZgXnGC9seRDscilBcTHAeOFk67MZg/k9bWVfO+bk4qZmG+l52hRnLwUiH2LnJTg==",
+    "file": "node_modules/@types/node/LICENSE",
+    "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "@types/react",
+    "version": "19.3.0",
+    "license": "MIT",
+    "integrity": "sha512-N0rFCuH9YoxG9/m61l9MfpJKfmLOVU0em7ipIz6TRgSSkvReLB9vL85GB+yr8Bs5leqpvg96JSwF4ZS1s4viQg==",
+    "file": "node_modules/@types/react/LICENSE",
+    "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "@types/react-dom",
+    "version": "19.3.0",
+    "license": "MIT",
+    "integrity": "sha512-ZI7bU42mZXXKHn/qNLEw2IrbiINU7X5+vfgdixBHkCNpYWXjKgfQ/P+uyGb5CjOLB9UcnTeg3rylQtV2hym44Q==",
+    "file": "node_modules/@types/react-dom/LICENSE",
+    "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "@wry/caches",
+    "version": "1.0.1",
+    "license": "MIT",
+    "integrity": "sha512-bXuaUNLVVkD20wcGBWRyo7j9N3TxePEWFZj2Y+r9OoUzfqmavM84+mFykRicNsBqatba5JLay1t48wxaXaWnlA==",
+    "file": "node_modules/@wry/caches/LICENSE",
+    "sha256": "b2be93bcd69f5c3c95433cf30990b184db78e516c4f65573269276961c29bdb6",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "@wry/context",
+    "version": "0.7.4",
+    "license": "MIT",
+    "integrity": "sha512-jmT7Sb4ZQWI5iyu3lobQxICu2nC/vbUhP0vIdd6tHC9PTfenmRmuIFqktc6GH9cgi+ZHnsLWPvfSvc4DrYmKiQ==",
+    "file": "licenses/wryware-MIT.txt",
+    "sha256": "b2be93bcd69f5c3c95433cf30990b184db78e516c4f65573269276961c29bdb6",
+    "source": "https://raw.githubusercontent.com/benjamn/wryware/16493ef8b4fb994a17e64f2bbeaf22ae9be16b4a/LICENSE"
+  },
+  {
+    "name": "@wry/equality",
+    "version": "0.5.7",
+    "license": "MIT",
+    "integrity": "sha512-BRFORjsTuQv5gxcXsuDXx6oGRhuVsEGwZy6LOzRRfgu+eSfxbhUQ9L9YtSEIuIjY/o7g3iWFjrc5eSY1GXP2Dw==",
+    "file": "node_modules/@wry/equality/LICENSE",
+    "sha256": "2c22242e9fd5c08e9e404172e0e4d13d180836b1db850b2fdd92b21a46158767",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "@wry/trie",
+    "version": "0.5.0",
+    "license": "MIT",
+    "integrity": "sha512-FNoYzHawTMk/6KMQoEG5O4PuioX19UbwdQKF44yw0nLfOypfQdjtfZzo/UIJWAJ23sNIFbD1Ug9lbaDGMwbqQA==",
+    "file": "licenses/wryware-MIT.txt",
+    "sha256": "b2be93bcd69f5c3c95433cf30990b184db78e516c4f65573269276961c29bdb6",
+    "source": "https://raw.githubusercontent.com/benjamn/wryware/16493ef8b4fb994a17e64f2bbeaf22ae9be16b4a/LICENSE"
+  },
+  {
+    "name": "canvas-renderer",
+    "version": "2.2.1",
+    "license": "MIT",
+    "integrity": "sha512-RrBgVL5qCEDIXpJ6NrzyRNoTnXxYarqm/cS/W6ERhUJts5UQtt/XPEosGN3rqUkZ4fjBArlnCbsISJ+KCFnIAg==",
+    "file": "node_modules/canvas-renderer/LICENSE",
+    "sha256": "7d2baf4e7257c621b4151500a056bd0576d8fd4a428ba415f071b286d7faf22c",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "cookie-es",
+    "version": "3.1.1",
+    "license": "MIT",
+    "integrity": "sha512-UaXxwISYJPTr9hwQxMFYZ7kNhSXboMXP+Z3TRX6f1/NyaGPfuNUZOWP1pUEb75B2HjfklIYLVRfWiFZJyC6Npg==",
+    "file": "node_modules/cookie-es/LICENSE",
+    "sha256": "f57270b85c3922414c061e36b93f7c74420b8facf5ccf729202d5ff5b7cd7608",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "csstype",
+    "version": "3.2.3",
+    "license": "MIT",
+    "integrity": "sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ==",
+    "file": "node_modules/csstype/LICENSE",
+    "sha256": "11d55bd4541c75ee7879547ac49089c489163dae49551389713c3d026cab383e",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "graphql",
+    "version": "16.14.2",
+    "license": "MIT",
+    "integrity": "sha512-Chq1s4CY7jmh8gO2qvLIJyfCDIN+EHLFW/9iShnp1z8FjBQMoodWP1kDC36VAMXXIvAjj4ARa7ntfAV2BrjsbA==",
+    "file": "node_modules/graphql/LICENSE",
+    "sha256": "35a11da7e877009ddc57405844209908cfc567adda0ec1daf410368c9f5b0d01",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "graphql-tag",
+    "version": "2.12.7",
+    "license": "MIT",
+    "integrity": "sha512-xnE/NFzy+0eIesvAsREJZ284zTl/wYuBAvpsFSDhRGRdRHdnE90M21Q3xAWyYInb0J756c6x0pIQ62+vtvOs1Q==",
+    "file": "node_modules/graphql-tag/LICENSE",
+    "sha256": "63f2fed3ef11e754717dff4957bfc7371affb067c523fa7c65f1a6656eb3e204",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "graphql-ws",
+    "version": "6.4.1",
+    "license": "MIT",
+    "integrity": "sha512-a3MzY5u+tCHHwuyimzxMAHZQ6TY7bOpkQURtKXE5kKIkBdsZ2axlb7sLzMpzGFO4guhws9FyMVB1onyX58pO4w==",
+    "file": "node_modules/graphql-ws/LICENSE.md",
+    "sha256": "58737f97fe15c9aa68eb067f97a5488ceffca6835bfce511c6819c5156dca48e",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "jdenticon",
+    "version": "3.3.0",
+    "license": "MIT",
+    "integrity": "sha512-DhuBRNRIybGPeAjMjdHbkIfiwZCCmf8ggu7C49jhp6aJ7DYsZfudnvnTY5/1vgUhrGA7JaDAx1WevnpjCPvaGg==",
+    "file": "node_modules/jdenticon/LICENSE",
+    "sha256": "8961ec272d8af2e9d99bf414d1da7945a82d5b7b48fac0f71d77e5786c7c807a",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "lucide-react",
+    "version": "1.61.0",
+    "license": "ISC",
+    "integrity": "sha512-v2SQPPPNjnr+BlhL9Spuzmo5yR+hLkftfuE4E3jaxdNPgSH0hJKPcLJBP7yAta87jQNPsSERS59PJjCJ/CorBA==",
+    "file": "node_modules/lucide-react/LICENSE",
+    "sha256": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "optimism",
+    "version": "0.18.1",
+    "license": "MIT",
+    "integrity": "sha512-mLXNwWPa9dgFyDqkNi54sjDyNJ9/fTI6WGBLgnXku1vdKY/jovHfZT5r+aiVeFFLOz+foPNOm5YJ4mqgld2GBQ==",
+    "file": "node_modules/optimism/LICENSE",
+    "sha256": "296b6466117e88464ddebde862ba2210ec0685795028dd8e514e9ecdef0b06bc",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "react",
+    "version": "19.3.1",
+    "license": "MIT",
+    "integrity": "sha512-QNhWdt7nrgVWWQG58QuGsAR3jv3Hbe4mb4vz7w2csnHavciZJgda1CPNaldF6eVxv90ud3jUXpKlHL69gO38yw==",
+    "file": "node_modules/react/LICENSE",
+    "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "react-dom",
+    "version": "19.3.1",
+    "license": "MIT",
+    "integrity": "sha512-Y0bARz53lhEC1NMCASs0/j+faB/zqt3R8hpvg1e8+61ZVJ4UL0UdC4cBbXfZMcIuhrfgeILTLe+ZeBCavQPtKQ==",
+    "file": "node_modules/react-dom/LICENSE",
+    "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "react-hook-form",
+    "version": "7.91.0",
+    "license": "MIT",
+    "integrity": "sha512-5BEBUnCBwa28AFXYTYmOaB/+CSpJ/+CWVASHEvIGUzFdHyUiPHeRhG7r5hOZ8nZi0yP7pbHdFNXO/p31EKTJFQ==",
+    "file": "node_modules/react-hook-form/LICENSE",
+    "sha256": "e8eeb472f0a5889c2c51625b86a3f9b8630680adb9f49a125352e2e426392780",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "react-router",
+    "version": "8.5.1",
+    "license": "MIT",
+    "integrity": "sha512-5u1eQ46QjuXjNfEnLwzrnou1Bm5dquO3xjVYkkMYCudtkicD2AQHtx+fvXzPATtPJx8TW6DR1x1TDRqsfHyZBw==",
+    "file": "node_modules/react-router/LICENSE.md",
+    "sha256": "77c9ee6a9c5d5782fb0c50b50d101189116314c14f7df0a1b0d385fc96a7ba49",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "rxjs",
+    "version": "7.8.2",
+    "license": "Apache-2.0",
+    "integrity": "sha512-dhKf903U/PQZY6boNNtAGdWbG85WAbjT/1xYoZIC7FAY0yWapOBQVsVrDl58W86//e1VpMNBtRV4MaXfdMySFA==",
+    "file": "node_modules/rxjs/LICENSE.txt",
+    "sha256": "81c407ac717813b0e3795402960e04003c7bba8ba59b621624707028531c9ade",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "scheduler",
+    "version": "0.28.0",
+    "license": "MIT",
+    "integrity": "sha512-juorfCmIkIw8tT+p5BXSm6PJjQF/ycEYmKyzURCIt/RaZIhL+PulbQ9Yu2z1HdOJDdqDTlxA1+xKBmHXJsczAw==",
+    "file": "node_modules/scheduler/LICENSE",
+    "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "tailwindcss",
+    "version": "4.3.3",
+    "license": "MIT",
+    "integrity": "sha512-gOhV3P7ufE62QDGg1zVaTgCR+EtPv92k2nIhVcVKcLmxT1sUBsQGhnZj175j+MqRt4zLF7ic+sCYjfhxMxj7YQ==",
+    "file": "node_modules/tailwindcss/LICENSE",
+    "sha256": "60e0b68c0f35c078eef3a5d29419d0b03ff84ec1df9c3f9d6e39a519a5ae7985",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "tslib",
+    "version": "2.8.1",
+    "license": "0BSD",
+    "integrity": "sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==",
+    "file": "node_modules/tslib/LICENSE.txt",
+    "sha256": "210b19e543130388c68654b7497e967119ce17145f66ab7d85688fbd70f08751",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "undici-types",
+    "version": "8.9.0",
+    "license": "MIT",
+    "integrity": "sha512-KTDyRTYX8sWmKXAikPHHSyc63CRPETMctyjKFupcC6OBLXT3xsN0e9aF7m+mIXutFWpUXuedtowG7iLOzp0kQg==",
+    "file": "node_modules/undici-types/LICENSE",
+    "sha256": "a6db8096b2707bc0102d256917d4d33f298ba36d8c3f25de067a2b5bb379db27",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "vite",
+    "version": "8.3.5",
+    "license": "MIT",
+    "integrity": "sha512-z1YpjieJ9g0ebTmQpLBv/oq9E3F9EIlOe+7LahW8SrE3LTiG3udBRUXQOlYXP9b+IC2q2phHeVxj9xGlw34OEQ==",
+    "file": "node_modules/vite/LICENSE.md",
+    "sha256": "a22152baa1aef74402443008e767e7c689a524c0909d19b0431d97f5ab066a13",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "ws",
+    "version": "8.22.0",
+    "license": "MIT",
+    "integrity": "sha512-Ydggc987+RO0AnWtZ/7Wq9FtNvcrL1b/RO0ud9mWjUPgDrsAAwQSF51sm2hm1XofbU/4jkpGEsLFsZZxU+1DOg==",
+    "file": "node_modules/ws/LICENSE",
+    "sha256": "2b29dcfe0d6471f7e8c92c5fb38c9f93edee10330937055440192f1832b1ecef",
+    "source": "npm package archive (package-lock.json integrity)"
+  },
+  {
+    "name": "zod",
+    "version": "4.6.7",
+    "license": "MIT",
+    "integrity": "sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==",
+    "file": "node_modules/zod/LICENSE",
+    "sha256": "3f1189b28e3866e0d979968d466b78f813f76827cfdca1fbb124cc0a5c8841f8",
+    "source": "npm package archive (package-lock.json integrity)"
+  }
+]

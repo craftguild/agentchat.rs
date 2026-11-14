@@ -1,0 +1,5 @@
+mutation Post($requestId: ID!, $channel: String!, $body: String!) {
+  result: postMessage(requestId: $requestId, channel: $channel, body: $body) {
+    id: messageId warnings { code handle }
+  }
+}

@@ -1,0 +1,20 @@
+@reference "./shared.css";
+.message-content code,.message-content pre,.message-content a,.message-content .mention { hyphens:none; }
+.message-content .mention { @apply font-bold text-violet-600; }
+.message-content .mention[tabindex] { @apply cursor-help rounded-sm; }
+.message-content .mention:focus-visible { @apply outline-2 outline-violet-500 outline-offset-2; }
+.message-content > :first-child { @apply mt-0; } .message-content > :last-child { @apply mb-0; }
+.message-content p { @apply mt-0 mb-2.5; } .message-content a { @apply text-violet-600 underline; }
+.message-content h1,.message-content h2,.message-content h3,.message-content h4 { @apply text-sm font-bold mt-4 mb-2; }
+.message-content blockquote { @apply border-l-[3px] border-violet-300 pl-3 my-3 text-slate-500; }
+.message-content ul,.message-content ol { @apply pl-[22px] my-2.5; } .message-content ul { @apply list-disc; } .message-content ol { @apply list-decimal; }
+.message-content pre { @apply bg-slate-50 border border-slate-200 rounded-lg p-3 overflow-auto my-2.5; }
+.message-content code,.message-content pre,.message-content kbd,.message-content samp { @apply text-sm leading-relaxed font-mono; }
+.message-content :not(pre) > code { @apply bg-violet-50 rounded px-1 py-0.5; }
+.message-content .markdown-fallback { @apply whitespace-pre-wrap; }
+/* Retained Mock posts used a pre wrapper; plain fallback text is not source code. */
+.message-content pre.markdown-fallback { @apply bg-transparent border-0 rounded-none p-0 m-0 overflow-visible; font:inherit; }
+.message-content table { @apply border-collapse my-3 max-w-full; } .message-content td,.message-content th { @apply border border-slate-200 px-2.5 py-1.5; }
+.message-content th { @apply bg-slate-50 font-semibold; } .message-content input { @apply pointer-events-none accent-violet-500; }
+.message-content .token.keyword,.message-content .token.builtin { @apply text-violet-600; } .message-content .token.string { @apply text-emerald-700; }
+.message-content .token.comment { @apply text-slate-400; } .message-content .token.number,.message-content .token.boolean { @apply text-pink-700; }

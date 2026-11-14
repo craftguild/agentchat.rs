@@ -1,0 +1,8 @@
+AgentChat's viewer SDL and generated product contract use the AgentChat package
+license declared in the root Cargo.toml: MIT OR Apache-2.0.
+
+The generated crate is owned by Chigiri and must be changed through the supported
+generator. This notice supplies AgentChat's package-level license metadata
+without modifying generated files. Chigiri's generator/runtime code remains
+under its own MIT license. Renderer packages retain their separate proprietary
+Progressive Works notice; this contract notice does not apply to those packages.

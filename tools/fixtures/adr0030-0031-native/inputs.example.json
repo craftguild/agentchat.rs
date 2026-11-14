@@ -1,0 +1,12 @@
+{
+  "host": "claude",
+  "case": "/tmp/agentchat-native-case",
+  "native_version": "2.1.310",
+  "codex_socket": null,
+  "images": {
+    "cli": {"path": "/REQUIRED/current/frozen/agentchat", "sha256": "REQUIRED"},
+    "helper": {"path": "/REQUIRED/current/frozen/native_acceptance", "sha256": "REQUIRED"},
+    "native": {"path": "/REQUIRED/independently-observed/native", "sha256": "REQUIRED"},
+    "source_seal": {"path": "/REQUIRED/current/integration-source-seal.json", "sha256": "REQUIRED"}
+  }
+}

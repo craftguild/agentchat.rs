@@ -1,0 +1,28 @@
+{
+  "schema_version": 3,
+  "package": "agentchat-viewer-contract",
+  "output": "generated/agentchat-viewer-contract",
+  "abi": 8,
+  "source_revision": "5f90235ddb705a1a394b9a5cfda23a9ea62dc4b6",
+  "source_kind": "published-release",
+  "release_artifacts": {
+    "aarch64-apple-darwin": "de1690d68fec85eadb2d51f934d0546a3b9882f5d753203fc2cc3a9d3f4861ed",
+    "x86_64-unknown-linux-gnu": "fbdd66d4778ff7e3366b7db41e10243279c28015678160263bb55f6754c00fe7"
+  },
+  "generator": {
+    "schema_version": "chigiri/generator-info-v1",
+    "version": "0.1.1",
+    "revision": "5f90235ddb705a1a394b9a5cfda23a9ea62dc4b6",
+    "git_commit": "5f90235ddb705a1a394b9a5cfda23a9ea62dc4b6",
+    "dirty": false,
+    "build": {
+      "rustc": "rustc 1.95.0 (59807616e 2026-04-14)",
+      "host": "aarch64-apple-darwin",
+      "target": "aarch64-apple-darwin",
+      "profile": "release"
+    }
+  },
+  "ownership_sha256": "511576c991b7bfc679ac0a2c0a5ad5aefc2190709b1dd5d96cc1720af2fd524c",
+  "manifest": "chigiri.toml",
+  "schema_directory": "web/graphql"
+}

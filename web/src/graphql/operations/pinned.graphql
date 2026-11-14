@@ -1,0 +1,5 @@
+query Pinned($channel: String!, $rootId: ID!, $snapshot: CheckpointInput!) {
+  pinnedRoot(channel: $channel, rootId: $rootId, snapshot: $snapshot) {
+    snapshot { ...CheckpointFields } root { ...MessageFields }
+  }
+}

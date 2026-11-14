@@ -1,0 +1,13 @@
+query MessageReceipts($messageId: ID!, $after: String, $limit: Int) {
+  message(messageId: $messageId, after: $after, limit: $limit) {
+    message { id channelId channel author { id kind handle } rootId threadId creationSeq createdAt body }
+    receipts {
+      items {
+        recipient { id kind handle }
+        delivery { deliveryId state queuedAt processingStartedAt deadlineAt timedOutAt deliveredAt leftAt }
+        reads { kind at }
+      }
+      nextCursor scanCursor head
+    }
+  }
+}

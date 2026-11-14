@@ -1,0 +1,82 @@
+name: Release artifacts
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    name: ${{ matrix.target }} release qualification
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: ubuntu-24.04
+            target: x86_64-unknown-linux-gnu
+          - runner: warp-macos-26-arm64-6x
+            target: aarch64-apple-darwin
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - name: Prepare Linux build storage
+        if: runner.os == 'Linux' && runner.environment == 'github-hosted'
+        run: |
+          df -h "$RUNNER_TEMP"
+          sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/.ghcup
+          df -h "$RUNNER_TEMP"
+      - name: Select isolated anonymous Cargo home
+        run: echo "CARGO_HOME=$RUNNER_TEMP/agentchat-cargo-anonymous" >> "$GITHUB_ENV"
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '26.0.0'
+      - name: Prepare tools and locked public dependencies
+        env:
+          EXPECTED_TARGET: ${{ matrix.target }}
+        run: |
+          rustup toolchain install 1.95.0 --profile minimal --component clippy,rustfmt
+          test "$(rustc -vV | sed -n 's/^host: //p')" = "$EXPECTED_TARGET"
+          test -z "$(git status --porcelain)"
+          npm install --global npm@11.12.1
+          make setup
+          GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_NOSYSTEM=1 cargo fetch --locked
+          npm ci --prefix web --ignore-scripts
+      - name: Build and qualify the exact clean release
+        run: |
+          make installer INSTALLER_ARGS=--check
+          make build PROFILE=release
+          make acceptance PROFILE=release
+      - name: Functional, durability, resource and timing workloads
+        run: |
+          python3 tools/run-workload.py --output "$RUNNER_TEMP/agentchat-native-workload"
+          python3 tools/run-viewer-workload.py --output "$RUNNER_TEMP/agentchat-viewer-workload" --target-dir "$RUNNER_TEMP/agentchat-workload-target"
+      - name: Package verified binaries, SBOM and checksums
+        run: make package PACKAGE_ARGS="--group agentchat --output $RUNNER_TEMP/agentchat-release-assets"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: release-${{ matrix.target }}
+          path: ${{ runner.temp }}/agentchat-release-assets/*
+          if-no-files-found: error
+          retention-days: 30
+      - name: Preserve qualification receipts and original outcomes
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qualification-${{ matrix.target }}
+          path: |
+            .craftguild/agentchat/runs/
+            .craftguild/agentchat/prepared.json
+            .craftguild/agentchat/receipt.json
+            ${{ runner.temp }}/agentchat-native-workload/
+            ${{ runner.temp }}/agentchat-viewer-workload/
+          if-no-files-found: warn
+          retention-days: 30

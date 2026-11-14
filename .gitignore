@@ -1,0 +1,36 @@
+/target/
+# Chigiri build/check caches can appear beside generated output directories.
+.chigiri-cache/
+/.quality-tools/
+__pycache__/
+/web/node_modules/
+/web/dist/
+/web/public/build-info.txt
+/web/viewer-context.json
+/web/test-results/
+/web/playwright-report/
+
+# Beads / Dolt files (added by bd init)
+.dolt/
+*.db
+.beads-credential-key
+.beads/proxieddb/
+*.gate.lock*
+
+# Exact historical originals and local preservation receipts are never public.
+/.private/
+/.craftguild/
+
+# Local coordination and the exact independent workspace are never public source.
+/.beads/
+/.claude/
+/.codex/
+/.cursor/
+/.agentchat/
+/.ac/
+/.ac-wakeup
+/.agentchat-wakeup
+/.beads.gate.lock
+/experiments/web-api-poc/
+
+.DS_Store

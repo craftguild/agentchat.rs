@@ -1,0 +1,66 @@
+[advisories]
+version = 2
+
+[licenses]
+version = 2
+confidence-threshold = 0.8
+allow = ["MIT", "Apache-2.0", "Unicode-3.0", "Zlib", "Unlicense"]
+
+# libproc's macOS binding generator and its build-time libclang loader.
+# Keep exceptions exact; a lockfile update must review changed versions again.
+[[licenses.exceptions]]
+name = "bindgen"
+version = "=0.72.1"
+allow = ["BSD-3-Clause"]
+
+[[licenses.exceptions]]
+name = "libloading"
+version = "=0.8.9"
+allow = ["ISC"]
+
+[bans]
+multiple-versions = "warn"
+wildcards = "deny"
+# Workspace crates are GitHub-only; permit their release-owned local paths.
+allow-wildcard-paths = true
+
+[sources]
+unknown-registry = "deny"
+unknown-git = "deny"
+required-git-spec = "rev"
+allow-git = [
+    "https://github.com/craftguild/chigiri.rs.git",
+    "https://github.com/craftguild/oriha.rs.git",
+    "https://github.com/craftguild/standards.rs",
+    "https://github.com/transact-rs/sqlx.git",
+]
+
+# Axum 0.8.9's routing dependency. Keep the additional license package-specific.
+[[licenses.exceptions]]
+name = "matchit"
+version = "=0.8.4"
+allow = ["BSD-3-Clause"]
+
+# The owned generated package inherits AgentChat's declared package license.
+# Its manifest remains byte-for-byte generator-owned.
+[[licenses.clarify]]
+name = "agentchat-viewer-contract"
+version = "=0.1.0"
+expression = "MIT OR Apache-2.0"
+license-files = [{ path = "../../web/CONTRACT-LICENSE", hash = 0x50724990 }]
+
+# Ammonia's CSS parser and its numeric formatter retain their MPL notices.
+[[licenses.exceptions]]
+name = "cssparser"
+version = "=0.38.0"
+allow = ["MPL-2.0"]
+
+# Exact permissive MIT No Attribution text reviewed in the SDK build dependency.
+[[licenses.exceptions]]
+name = "borrow-or-share"
+version = "=0.2.4"
+allow = ["MIT-0"]
+[[licenses.exceptions]]
+name = "dtoa-short"
+version = "=0.3.5"
+allow = ["MPL-2.0"]

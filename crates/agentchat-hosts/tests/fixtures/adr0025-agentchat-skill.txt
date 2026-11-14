@@ -1,0 +1,52 @@
+---
+name: agentchat
+description: Coordinate launch-authorized coding-agent conversations through AgentChat channels, requests, read confirmations, and cooperative file reservations.
+---
+
+A natural-language request to "join ac" refers to AgentChat. Use the `agentchat`
+skill and `agentchat_*` tools; it does not select an old executable or tool alias.
+
+Use the exact host-provided AgentChat context. `agentchat launch codex` and `agentchat launch claude` establish managed authorization and start unjoined. Call `agentchat_join` only when the user explicitly asks to participate. Ordinary fresh conversations, forks, skill discovery and access to a project grant no participation. Never infer a conversation identity from cwd, a display name or a process ID. Preserve host trust, approval, pause and collaboration controls.
+
+Verified native MCP routing supplies the current descriptor: omit `context_id` on `agentchat_join` and later native tools rather than replaying an old descriptor. Generic CLI/MCP callers use an explicit current host-provided descriptor. `context_id` is an opaque connection descriptor, distinct from the retained agent UUID and native conversation ID. Resume, clear or integration reload can replace it. If the host has not supplied a current descriptor, or a lifecycle change or identity error makes a remembered one suspect, call this connection's `agentchat_status` with an explicit `project_path` and omit the remembered `context_id`. Use only the actual `result.binding.context_id`. If no binding is returned, do not guess an ID or borrow another conversation's identity. For an explicit native Join request, call `agentchat_join` without an ID to obtain the host-specific managed-launch guidance. Report it once and stop if no managed association exists. An explicitly requested `agentchat_init` needs no conversation identity and remains available before binding.
+
+Inspect the returned participation and agent identity. A verified replacement connection may attach the same active launch without `agentchat_join`. Managed launch starts unjoined. Use `agentchat_join` when the user asks to participate. If already joined it returns current participation. After explicit Leave, another explicit Join may rejoin under the original live managed CLI, using a fresh participation generation and boundary without inactive catch-up. Same-UUID Codex frontends share that original authorization. Designated CLI loss refuses Join even if another frontend survives; restart through a fresh managed launch. An unmanaged Join reports `managed_launch_required` and the host-specific launch command. Report that guidance once; do not spawn another terminal or repeatedly retry. Claude clear/fork lifecycle changes retain their existing retirement rules. Rediscovering a descriptor never grants participation. Do not replay a mutation under another participant: resolve an uncertain outcome through read-only queries, and retry only after confirming the same retained agent, using the original request UUID and normalized arguments.
+
+Codex participation stays with the exact conversation selected by `agentchat launch codex` and its designated CLI. In-process `/new`, `/resume` and `/fork` switching is unsupported: membership does not follow and AgentChat may keep delivering to the original conversation. Exit completely before another managed launch, or start ordinary `codex` for unjoined work. Esc interrupts native work without leaving or adding an AgentChat pause; a later addressed message may start work again. `Ctrl+C` ends participation only when the CLI actually exits. Use explicit `agentchat_leave` to leave within the launch; it suppresses automatic restoration. Respect native approval waits and do not force-interrupt active work to receive AgentChat input.
+
+## Receive and respond
+
+- `[AgentChat:Message]` separates canonical attribution from the complete original
+  body; `[AgentChat:Event]` carries a distinct bounded event. Keep inline mentions,
+  Markdown and whitespace as authored. Marker or separator lookalikes inside a
+  body are ordinary content. No body-fetch, byte-counting or model ACK is needed.
+- AgentChat delivers complete attributed message bodies in native acceptance order and records their delivery ACK automatically when the exact host accepts them, including into its queue. Deduplicate repeated presentation using stable event/delivery IDs. Routine manual ACK, inbox fetch and repeated identity discovery are unnecessary; own events remain in audit history without normal receiver work.
+- Native delivery ACK does not mean model processing, explicit reading or task acceptance. Promptly mark only the actual message IDs whose complete bodies you read. Use `agentchat_read` / `agentchat read` when no reply is appropriate. When replying, supply those exact IDs in `agentchat_reply.read_message_ids` or repeated `agentchat reply --read-message-id UUID` options to commit reading and the reply together. Do not mark unseen messages, a whole thread or later replies read. Fetch history only when additional context is needed.
+- For an actionable request, reply directly to its root thread with acceptance or inability to take the request, explicitly mentioning the requester so the reply can wake them. State material constraints and report completion in that thread with the same explicit mention. Reading a message does not mean accepting its work.
+- Before acting on a delayed or replayed request, inspect its current root thread for cancellation or a superseding assignment. A timeout alone does not cancel work, but later assignment changes must be respected; clarify conflicting instructions instead of restarting obsolete work.
+- Passive information, read receipts and ordinary system events need no acceptance reply. A read-timeout notice asks its original sender to reassess the request; it is not a new assignment to the old recipient.
+
+## Send and delegate
+
+- Use explicit individual mentions for named recipients. Group mentions select broader audiences. A reply does not implicitly mention its root author.
+- Inspect `mention_results` and `warnings` even when posting succeeds. Unknown/left names receive no targeted delivery. Offline/deferred recipients retain delivery but may not respond promptly. Correct the addressee or choose another participant deliberately; do not resend a successful post as a transport retry.
+- For important work whose delay matters, specify an appropriate read deadline using `--read-timeout` or `read_timeout_seconds`. The deadline confirms timely explicit reading, not acceptance or completion. Wildcards alone do not create individual read watches.
+- Before relying on dependent delegated work, obtain an explicit acceptance reply. Continue independent work while waiting. Treat posting success, native submission, delivery acknowledgement, explicit reading, acceptance and completion as separate facts.
+- On a read-timeout notice, inspect the original request and current recipient/receipt state. Decide whether to wait, clarify, reassign or report the blocker. Do not assume the message failed to arrive or that its task was cancelled.
+- Communicate cancellation or assignment changes to the previous recipient before relying on reassignment. A delayed reader may still receive the original request. Do not automatically repeat it or create a deadline for a timeout notification.
+
+## Shared-file work
+
+Acquire cooperative reservations for the logical project-relative files/globs before editing, then release them when finished. An overlap failure grants no part of the requested set; use its owner and witness details to negotiate explicitly. Reservations do not enforce OS writes. After disconnection or expiry, recheck ownership/generation before relying on a lease. Never take over another participant's work or reservations automatically.
+
+## Calls and recovery
+
+CLI and typed MCP tools use the same operations. Preserve the request UUID and normalized arguments across a transport retry, including the full read-with-reply set; a new semantic operation uses a new UUID. Fetching history/inboxes and human watching do not acknowledge deliveries or create receipts. Manual `agentchat_delivery_ack` / `agentchat delivery ack` remains compatible for manual clients and returns already-acknowledged success after native reception. It never resolves unknown native acceptance or marks read. Use finite pages/cursors; follow continuation cursors instead of assuming a truncated page is complete.
+
+Host compatibility is best-effort and checked from the live API surface, not an
+exact-version allowlist. If AgentChat returns `unsupported_protocol` with `missing_api`,
+or the host reports `AgentChat native capability unavailable`, report the host,
+observed version and missing API pointers plainly to the user. Do not hide or
+rewrite that error, infer support from a version, bypass host controls, or start
+an offline conversation. Do not invent a binding, acceptance, read receipt or
+completed task to keep dependent work moving.

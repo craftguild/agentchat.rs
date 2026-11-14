@@ -1,0 +1,41 @@
+{
+  "inputs": {
+    "crates/agentchat-store/src/entities/agent.rs": "540181fd68c30eb7da5a7eaca4b9610d2995e3a2bac5b25c1188161b5cde7be8",
+    "crates/agentchat-store/src/entities/channel.rs": "cca2ba5e70cd5d36dcc1050de4dd3282a8c0feeaa4e5d8bf7d78ce8888f5e622",
+    "crates/agentchat-store/src/entities/delivery.rs": "bc9f70f945da6fd3345e8250e92fbf2db800f8f993bde7a22d9ded412f912f17",
+    "crates/agentchat-store/src/entities/event.rs": "c2834df47af79fca2dd265d092773da27c09c2ae1942793c08792486cf32d165",
+    "crates/agentchat-store/src/entities/idempotency.rs": "988e2723414df43da4a05a3fda64379057eec1ff430d641ecbb9618cf562a1e5",
+    "crates/agentchat-store/src/entities/membership.rs": "7a9fd65dd4ebc026b7e436b41434b50482f45e3cd412f06a0963f3191dd8f6b8",
+    "crates/agentchat-store/src/entities/mention.rs": "b5758671e9dcb04512b5f783b73e1e7ac32a921106cfcae86984ed4bcb7b6161",
+    "crates/agentchat-store/src/entities/message.rs": "8515cb7313558e2bd5466eb07a5d652ddb20994a503ca433cf0f66687e420fbd",
+    "crates/agentchat-store/src/entities/migration.rs": "9ba2737430fdd72705ee79d6dc9c59f9e8cf8189a0680bc6b90930b76889814a",
+    "crates/agentchat-store/src/entities/project.rs": "b123017dbb84082d13b60c7e94fb9dad8d51dd0202f1ec2e561fbdb46fd57c86",
+    "crates/agentchat-store/src/entities/receipt.rs": "412df0d9cc7b1e51faedbbeea5e6b1abda34e49024e33062df109312a4770b1f",
+    "crates/agentchat-store/src/entities/reservation.rs": "7958ee884d349d7c7e5b088e9c5941e10c6a803f9d3f82e3bbf737021c126309",
+    "crates/agentchat-store/src/entities/reservation_pattern.rs": "8e49f23bd67c51fc7eb6c5ff3037e09833462c4b875f7dd62eca88ce7c5cc1f7",
+    "crates/agentchat-store/src/entities/session.rs": "e2fab304b292cbe0c8d6d52566fc0ccac7ecdbaa8636bf60b5d62fc363339bf0",
+    "crates/agentchat-store/src/entities/wake_batch.rs": "53e8da770fea9ae5ee409de2e32d9c3fe113b2f51489527876b5c95c13d5abf4"
+  },
+  "migration": "m20261015_000001_initial",
+  "outputs": {
+    "initial_entities/agent.rs": "a97ccf2044fd19b1607beb9e0f0d94b1674e50718abac4b6ad31c17cd3dcd130",
+    "initial_entities/channel.rs": "8d56dd3f37598c558275b20998fe8e4e4842d04f2b6d74ea0a5a6879e10d8da5",
+    "initial_entities/delivery.rs": "3b84ac27ecbc577ddb9bf6c98ceccb918fa4968a1ffb64e401912fa6891fc095",
+    "initial_entities/event.rs": "9c050317577abf15d167ce0a93c6733c8075cf5bf8d29444a59d35502d5ef12b",
+    "initial_entities/idempotency.rs": "ce0bead3ea113cab54a4fb4fdcb65d99de21cebefd19c927af0a7d904189759d",
+    "initial_entities/membership.rs": "3ec0645f38ce9d99b10222eec3ae680c44cb5d94a2055404f8eddd316cfd2c78",
+    "initial_entities/mention.rs": "be47e3f3f792633106cda7b9362c2ff7df78ecf39f77a2f100eab46dd554ae37",
+    "initial_entities/message.rs": "a2e4fbc09c3290a5d3213ded89afa20c68d24ba80b616e747a4908e6dfc74e4b",
+    "initial_entities/migration.rs": "4988ce00e9db688381c30f3e0ee8bce6aee6fdb571b3e4146f53cfa50ed45ad4",
+    "initial_entities/mod.rs": "72a14f3a1440fc8141d5f889d789f136c117b22e6b62195d503cfc491b254508",
+    "initial_entities/project.rs": "a5655a91690ec57e6b5b488906d82f88f3e04f9f33221d49bb1fd17519756117",
+    "initial_entities/receipt.rs": "45fbd802362159347b9d0c964c5edbae150466d70056c6a6bfc1ac34d613f27f",
+    "initial_entities/reservation.rs": "5b31dbbf07ce45b654f170221d8ed8e18d520a54a63890fd15b1236a67dcf930",
+    "initial_entities/reservation_pattern.rs": "fd1709bab1a98157345bf0cb390aab5d66b6865aeb35e3f020f0117f65c2dde3",
+    "initial_entities/session.rs": "391aa0176e059d51086866f87c935c85b7a3014f3798de0414beff25d869dbe2",
+    "initial_entities/wake_batch.rs": "3c4c43255b60297ecb14b1687d8f97f567cb677fc41e9e0c5fab0ccdf5f1b30a",
+    "v1_tables.rs": "9b85ea9be6f3a3eae15b94c8a8891104ae5b1db392efebdfc921a60574b9b6c6"
+  },
+  "sea_orm_version": "2.0.4",
+  "version": 1
+}

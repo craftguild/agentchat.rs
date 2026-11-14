@@ -1,0 +1,78 @@
+[workspace]
+members = ["crates/*"]
+exclude = ["generated/agentchat-viewer-contract"]
+resolver = "3"
+
+[workspace.package]
+publish = false
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.95"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/craftguild/agentchat.rs"
+
+[workspace.dependencies]
+agentchat-core = { path = "crates/agentchat-core" }
+agentchat-store = { path = "crates/agentchat-store" }
+agentchat-protocol = { path = "crates/agentchat-protocol" }
+agentchat-hosts = { path = "crates/agentchat-hosts" }
+agentchat-runtime = { path = "crates/agentchat-runtime" }
+agentchat-mcp = { path = "crates/agentchat-mcp" }
+agentchat-web = { path = "crates/agentchat-web" }
+agentchat-viewer-contract = { path = "generated/agentchat-viewer-contract", version = "=0.1.0" }
+chigiri = { git = "https://github.com/craftguild/chigiri.rs.git", rev = "5f90235ddb705a1a394b9a5cfda23a9ea62dc4b6", version = "=0.1.1", features = ["subscription-worker"] }
+chigiri_axum = { git = "https://github.com/craftguild/chigiri.rs.git", rev = "5f90235ddb705a1a394b9a5cfda23a9ea62dc4b6", version = "=0.1.1" }
+oriha-core = { git = "https://github.com/craftguild/oriha.rs.git", rev = "d46fa615fcd0e5d5ad730342436188ddb5a0e917", version = "=0.1.1" }
+craftguild-cli = { git = "https://github.com/craftguild/standards.rs", rev = "be63eefb44a850a01f4cc065c66fff2fe558ee18", version = "=0.6.2" }
+craftguild-cli-build = { git = "https://github.com/craftguild/standards.rs", rev = "be63eefb44a850a01f4cc065c66fff2fe558ee18", version = "=0.6.2" }
+axum = { version = "=0.8.9", default-features = false, features = ["http1", "tokio"] }
+tower = { version = "=0.5.3", features = ["util", "limit"] }
+ammonia = "=4.2.5"
+serde = { version = "=1.0.228", features = ["derive"] }
+serde_json = "=1.0.149"
+uuid = { version = "=1.28.0", features = ["v4", "serde"] }
+thiserror = "=2.0.21"
+chrono = { version = "=0.4.45", features = ["serde"] }
+regex-automata = "=0.4.18"
+regex-syntax = "=0.8.11"
+sea-orm = { version = "=2.0.4", default-features = false, features = ["macros", "sqlx-sqlite", "runtime-tokio", "with-json", "with-chrono", "with-uuid", "sqlite-use-returning-for-3_35"] }
+sea-orm-migration = { version = "=2.0.4", default-features = false, features = ["sqlx-sqlite", "runtime-tokio"] }
+sha2 = "=0.11.0"
+fs2 = "=0.4.3"
+tokio = { version = "=1.53.3", features = ["rt-multi-thread", "macros", "io-util", "io-std", "net", "process", "time", "sync", "signal"] }
+tempfile = "=3.27.0"
+proptest = "=1.12.0"
+tokio-tungstenite = "=0.30.0"
+futures-util = { version = "=0.3.34", features = ["sink"] }
+async-trait = "=0.1.92"
+rustix = { version = "=1.1.6", features = ["process"] }
+libproc = "=0.14.11"
+sysctl = "=0.7.1"
+clap = { version = "=4.6.7", features = ["derive", "env"] }
+rmcp = { version = "=3.9.0", default-features = false, features = ["server", "macros", "transport-io"] }
+schemars = { version = "=1.1.0", features = ["uuid1"] }
+toml_edit = "=0.25.17"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+missing_docs = "deny"
+
+[workspace.lints.clippy]
+all = "warn"
+
+# Published SQLx 0.9.0 caps SQLite below its security-fixed bundled release.
+# The official bound fix permits libsqlite3-sys 0.39.x (SQLite 3.54.x).
+# Patch matching workspace crates together to preserve one SQLx type identity.
+[patch.crates-io]
+sqlx = { git = "https://github.com/transact-rs/sqlx.git", rev = "10462fa4414c6c7f1ed1d39bb31678e3b726878c", version = "=0.9.0" }
+sqlx-core = { git = "https://github.com/transact-rs/sqlx.git", rev = "10462fa4414c6c7f1ed1d39bb31678e3b726878c", version = "=0.9.0" }
+sqlx-sqlite = { git = "https://github.com/transact-rs/sqlx.git", rev = "10462fa4414c6c7f1ed1d39bb31678e3b726878c", version = "=0.9.0" }
+sqlx-macros = { git = "https://github.com/transact-rs/sqlx.git", rev = "10462fa4414c6c7f1ed1d39bb31678e3b726878c", version = "=0.9.0" }
+sqlx-macros-core = { git = "https://github.com/transact-rs/sqlx.git", rev = "10462fa4414c6c7f1ed1d39bb31678e3b726878c", version = "=0.9.0" }
+sqlx-mysql = { git = "https://github.com/transact-rs/sqlx.git", rev = "10462fa4414c6c7f1ed1d39bb31678e3b726878c", version = "=0.9.0" }
+sqlx-postgres = { git = "https://github.com/transact-rs/sqlx.git", rev = "10462fa4414c6c7f1ed1d39bb31678e3b726878c", version = "=0.9.0" }
+
+# Keep the full workspace test outputs within standard CI disk capacity.
+[profile.test]
+debug = 0
+incremental = false

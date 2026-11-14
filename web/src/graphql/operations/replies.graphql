@@ -1,0 +1,5 @@
+query Replies($channel: String!, $rootId: ID!, $before: String, $snapshot: CheckpointInput, $limit: Int) {
+  replies(channel: $channel, rootId: $rootId, before: $before, snapshot: $snapshot, limit: $limit) {
+    snapshot { ...CheckpointFields } nextBefore items { ...MessageFields }
+  }
+}

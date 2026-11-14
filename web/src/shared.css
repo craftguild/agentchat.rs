@@ -1,0 +1,17 @@
+@import "tailwindcss";
+@source "./**/*.{ts,tsx}";
+
+@theme {
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --text-md: 1rem;
+  --text-md--line-height: 1.5rem;
+}
+
+@layer base {
+  body { @apply font-sans text-sm; color: #262039; }
+  button { cursor: pointer; }
+  button:disabled { cursor: default; opacity: .5; }
+  button:focus-visible, a:focus-visible { outline: 3px solid #a78bfa; outline-offset: 3px; }
+  * { box-sizing: border-box; }
+}

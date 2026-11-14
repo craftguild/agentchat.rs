@@ -1,0 +1,278 @@
+schema_version = 2
+standards_version = "0.1.0"
+rust_output_layout = "standard"
+
+[[artifacts]]
+id = "agentchat"
+command = "agentchat"
+project = "agentchat.rs"
+kind = "rust"
+manifest = "Cargo.toml"
+lockfile = "Cargo.lock"
+package = "agentchat-cli"
+inputs = ["rust-toolchain.toml", "Makefile", "chigiri.toml", "web/package.json", "web/package-lock.json", "web/tsconfig.json", "web/vite.config.ts", "web/codegen.ts", "web/index.html", "web/chigiri-provenance.json", "tools/chigiri_contract.py", ".craftguild/viewer-contract.json"]
+input_dirs = ["crates", "generated/agentchat-viewer-contract", "web/src", "web/public", "web/graphql", "web/fixtures", "web/scripts", "web/licenses", "standards"]
+supplemental = ".craftguild/viewer-supplemental.json"
+[artifacts.bundle]
+root = "web"
+lockfile = "web/package-lock.json"
+metafile = ".craftguild/viewer-metafile.json"
+directory = "web/dist"
+command = ["npm", "run", "build", "--prefix", "web"]
+[artifacts.build]
+toolchain = "1.95.0"
+[[artifacts.build.hooks]]
+id = "contract-ownership"
+stage = "prepare"
+argv = ["python3", "tools/chigiri_contract.py", "--ownership"]
+inputs = ["chigiri.toml", "web/chigiri-provenance.json", "tools/chigiri_contract.py"]
+input_dirs = ["web/graphql", "generated/agentchat-viewer-contract"]
+outputs = [".craftguild/viewer-contract.json"]
+
+[[releases]]
+id = "agentchat"
+initial_version = "0.1.0"
+tag_prefix = "v"
+notes = "docs/releases"
+paths = ["crates", "generated", "tools", "docs", "web", "scripts", "standards", ".agents", ".github", "Cargo.toml", "Cargo.lock", "Makefile", "craftguild.toml", "rust-toolchain.toml", "chigiri.toml", "deny.toml", "README.md", "AGENTS.md", "CLAUDE.md", ".gitignore", "LICENSE-MIT", "LICENSE-APACHE"]
+[[releases.cargo]]
+manifest = "Cargo.toml"
+lockfile = "Cargo.lock"
+workspace = true
+packages = ["agentchat-core", "agentchat-store", "agentchat-protocol", "agentchat-hosts", "agentchat-runtime", "agentchat-mcp", "agentchat-web", "agentchat-cli"]
+[[releases.npm]]
+manifest = "web/package.json"
+lockfile = "web/package-lock.json"
+
+[[adapters]]
+language = "rust"
+test = ["python3", "tools/rust-checks.py", "test"]
+format = ["python3", "tools/rust-checks.py", "format"]
+lint = ["python3", "tools/rust-checks.py", "lint"]
+[[adapters]]
+language = "npm"
+test = ["npm", "test", "--prefix", "web"]
+lint = ["npm", "run", "codegen:check", "--prefix", "web"]
+typecheck = ["npm", "run", "typecheck", "--prefix", "web"]
+
+[[policies]]
+kind = "publication"
+repository = "craftguild/agentchat.rs"
+manifest = "Cargo.toml"
+npm_lockfiles = ["web/package-lock.json"]
+[[policies]]
+kind = "dependencies"
+manifest = "Cargo.toml"
+layers = { "agentchat-core" = [], "agentchat-store" = ["agentchat-core"], "agentchat-protocol" = ["agentchat-core"], "agentchat-hosts" = ["agentchat-core", "agentchat-protocol"], "agentchat-runtime" = ["agentchat-core", "agentchat-store", "agentchat-protocol", "agentchat-hosts"], "agentchat-mcp" = ["agentchat-core", "agentchat-protocol"], "agentchat-web" = ["agentchat-core", "agentchat-protocol", "agentchat-viewer-contract"], "agentchat-cli" = ["agentchat-core", "agentchat-store", "agentchat-protocol", "agentchat-hosts", "agentchat-runtime", "agentchat-mcp", "agentchat-web"] }
+restricted = { sea-orm = ["agentchat-store"], sea-orm-migration = ["agentchat-store"] }
+# SDK 0.6.2 misclassifies sea_orm::sea_query reexports as direct-driver access.
+# The product-contracts gate retains the original raw/driver/schema-sync guard,
+# including frozen migrations and tests; no persistence constraint is waived.
+
+[[generated]]
+owner = "agentchat-viewer-contract"
+manifest = ".craftguild/viewer-contract.json"
+output_root = "generated/agentchat-viewer-contract"
+reproduce = ["python3", "tools/chigiri_contract.py", "--reproduce", "{output}"]
+rust_size_exception = true
+
+[[operations]]
+name = "test"
+artifact = "agentchat"
+prepare = ["agentchat"]
+[[operations.hooks]]
+id = "product-check-tools"
+stage = "prerequisite"
+argv = ["python3", "tools/quality-env.py"]
+inputs = ["web/package-lock.json", "tools/quality-env.py", "tools/chigiri_contract.py"]
+outputs = [".craftguild/quality-environment.json"]
+environment_output = ".craftguild/quality-environment.json"
+
+[[operations]]
+name = "check"
+artifact = "agentchat"
+prepare = ["agentchat"]
+[[operations.hooks]]
+id = "product-check-tools"
+stage = "prerequisite"
+argv = ["python3", "tools/quality-env.py"]
+inputs = ["web/package-lock.json", "tools/quality-env.py", "tools/chigiri_contract.py"]
+outputs = [".craftguild/quality-environment.json"]
+environment_output = ".craftguild/quality-environment.json"
+
+[[commands]]
+id = "product-contracts"
+phase = "check"
+purpose = "Frozen migrations, native policy AST, generated contracts and embedded assets"
+argv = ["python3", "tools/check.py"]
+
+[[commands]]
+id = "tooling"
+phase = "check"
+purpose = "Product generator, asset, public inventory and fixture orchestration regressions"
+argv = ["python3", "-m", "unittest", "discover", "-s", "tools/tests", "-p", "test_*.py", "-v"]
+
+[[commands]]
+id = "dependencies"
+phase = "check"
+purpose = "Review locked dependencies and exact license declarations"
+argv = ["cargo", "deny", "--locked", "check"]
+
+[[commands]]
+id = "standalone"
+phase = "acceptance"
+purpose = "Actual verified binary offline presentation, exact SBOM and owned staged installation"
+argv = ["python3", "tools/standalone.py"]
+
+[[sources]]
+pattern = "crates/*/src/**"
+role = "implementation"
+reason = "Product runtime, transport, domain and persistence implementation"
+
+[[sources]]
+pattern = "crates/*/build.rs"
+role = "implementation"
+reason = "Product asset and build identity integration"
+
+[[sources]]
+pattern = "crates/*/examples/**"
+role = "implementation"
+reason = "Product native-authority syntax admission checker entry"
+
+[[sources]]
+pattern = "crates/*/tests/**"
+role = "test"
+reason = "Separate Rust product tests and their isolated fixtures"
+
+[[sources]]
+pattern = "generated/**/*.rs"
+role = "generated"
+reason = "Chigiri-owned Rust contract with exact provenance and isolated reproduction"
+
+[[sources]]
+pattern = "tools/*.py"
+role = "implementation"
+reason = "Product verification and environment/command orchestration"
+
+[[sources]]
+pattern = "tools/host-boundary/**"
+role = "implementation"
+reason = "Product-specific host policy AST checker"
+
+[[sources]]
+pattern = "tools/tests/**"
+role = "test"
+reason = "Product-specific tooling regression tests"
+
+[[sources]]
+pattern = "tools/fixtures/**"
+role = "fixture"
+reason = "Retained isolated native acceptance environment and control fixtures"
+
+[[sources]]
+pattern = "tools/provenance/**"
+role = "documentation"
+reason = "Published generator provenance guidance"
+
+[[sources]]
+pattern = "web/src/**"
+role = "implementation"
+reason = "Shipped React viewer and catalog-generated TypeScript SDK"
+
+[[sources]]
+pattern = "web/scripts/**"
+role = "implementation"
+reason = "Viewer generation, development and bundle evidence integration"
+
+[[sources]]
+pattern = "web/tests/**"
+role = "test"
+reason = "Frontend, Mock, browser and actual API tests and helpers"
+
+[[sources]]
+pattern = "web/fixtures/**"
+role = "fixture"
+reason = "Isolated Chigiri Mock fixture"
+
+[[sources]]
+pattern = "web/public/**"
+role = "implementation"
+reason = "Owned shipped frontend resources"
+
+[[sources]]
+pattern = "web/graphql/**"
+role = "implementation"
+reason = "Public viewer schema"
+
+[[sources]]
+pattern = "web/*.ts"
+role = "implementation"
+reason = "Frontend build and test configuration"
+
+[[sources]]
+pattern = "web/index.html"
+role = "implementation"
+reason = "Viewer HTML entry"
+
+[[sources]]
+pattern = "web/licenses/**"
+role = "vendored"
+reason = "Retained upstream license notices"
+
+[[sources]]
+pattern = ".github/workflows/**"
+role = "implementation"
+reason = "Product CI and target qualification orchestration"
+
+[[sources]]
+pattern = "standards/**"
+role = "vendored"
+reason = "Initializer-owned common entry verified against the fixed release"
+
+[[sources]]
+pattern = ".agents/skills/**"
+role = "documentation"
+reason = "Repository-specific agent guidance"
+
+[[sources]]
+pattern = "docs/**"
+role = "documentation"
+reason = "Current user and design contracts"
+
+[[sources]]
+pattern = "*.md"
+role = "documentation"
+reason = "Project entry and contributor guidance"
+
+[[sources]]
+pattern = "Makefile"
+role = "implementation"
+reason = "Thin shared development and distribution entry"
+
+[[installers]]
+artifact = "agentchat"
+repository = "craftguild/agentchat.rs"
+release_group = "agentchat"
+output = "scripts/install.sh"
+
+[[sources]]
+pattern = "scripts/install.sh"
+role = "implementation"
+reason = "Common generated download installer; measured shell source"
+
+[[sources]]
+pattern = "crates/*/assets/**/*.{js,mjs,py,sh,ts,svg,html}"
+role = "implementation"
+reason = "Embedded first-party native integration code"
+
+[[commands]]
+id = "mock"
+phase = "check"
+purpose = "Published Chigiri Mock development API compatibility"
+argv = ["npm", "run", "test:dev", "--prefix", "web"]
+
+[[commands]]
+id = "release-config"
+phase = "check"
+purpose = "Validate owned initial versions and the common generated installer"
+argv = ["python3", "standards/launcher.py", "check-release-config"]

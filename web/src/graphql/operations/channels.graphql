@@ -1,0 +1,5 @@
+query Channels($after: String) {
+  channels(state: ALL, after: $after) {
+    items { ...ChannelViewFields } nextCursor scanCursor head asOf
+  }
+}

@@ -1,0 +1,3 @@
+query Validate($after: CheckpointInput!, $through: CheckpointInput!) {
+  changes(after: $after, through: $through, limit: 1) { head { ...CheckpointFields } }
+}

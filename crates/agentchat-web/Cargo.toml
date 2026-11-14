@@ -1,0 +1,39 @@
+[package]
+name = "agentchat-web"
+version.workspace = true
+publish.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[dependencies]
+agentchat-core.workspace = true
+agentchat-protocol.workspace = true
+agentchat-viewer-contract.workspace = true
+chigiri.workspace = true
+chigiri_axum.workspace = true
+oriha-core.workspace = true
+ammonia.workspace = true
+axum.workspace = true
+tower.workspace = true
+tokio.workspace = true
+futures-util.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+uuid.workspace = true
+sha2.workspace = true
+
+[build-dependencies]
+serde.workspace = true
+serde_json.workspace = true
+sha2.workspace = true
+
+[dev-dependencies]
+async-trait.workspace = true
+tempfile.workspace = true
+hyper = { version = "=1.12.0", features = ["client", "http1"] }
+hyper-util = { version = "=0.1.21", features = ["tokio"] }
+http-body-util = "=0.1.5"
+
+[lints]
+workspace = true

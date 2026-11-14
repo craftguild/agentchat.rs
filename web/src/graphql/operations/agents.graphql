@@ -1,0 +1,3 @@
+query Agents($after: String) {
+  agents(after: $after) { items { ...AgentFields } nextCursor scanCursor head }
+}

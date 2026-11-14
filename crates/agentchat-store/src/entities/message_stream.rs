@@ -1,0 +1,25 @@
+//! Per-generation ordered full-body cursor and one retained submission head.
+use sea_orm::entity::prelude::*;
+
+#[derive(Clone, Debug, PartialEq, DeriveEntityModel)]
+#[sea_orm(table_name = "message_streams")]
+pub struct Model {
+    #[sea_orm(primary_key, auto_increment = false)]
+    pub generation: String,
+    pub settled_seq: i64,
+    pub head_delivery: Option<String>,
+    pub head_seq: Option<i64>,
+    pub incarnation: Option<String>,
+    pub token: Option<String>,
+    pub attempts: Option<i32>,
+    pub retry_at: Option<String>,
+    pub failure_code: Option<String>,
+    pub awaiting_acceptance: bool,
+    pub submission_pending: bool,
+    pub cancelled: bool,
+    pub auto_read: Option<bool>,
+    pub frame_revision: Option<i32>,
+}
+#[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]
+pub enum Relation {}
+impl ActiveModelBehavior for ActiveModel {}

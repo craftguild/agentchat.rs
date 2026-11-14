@@ -1,0 +1,2 @@
+"Browser-only immutable content. Never sent to the server."
+type ViewerBody { id: ID!, body: String!, bodyHtml: String!, renderFallback: Boolean! }

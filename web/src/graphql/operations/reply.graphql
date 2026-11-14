@@ -1,0 +1,5 @@
+mutation Reply($requestId: ID!, $rootId: ID!, $body: String!) {
+  result: replyMessage(requestId: $requestId, rootId: $rootId, body: $body) {
+    id: messageId warnings { code handle }
+  }
+}

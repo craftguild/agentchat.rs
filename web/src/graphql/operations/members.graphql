@@ -1,0 +1,5 @@
+query Members($channel: String!, $after: String) {
+  channelMembers(channel: $channel, after: $after) {
+    items { ...ActorFields } nextCursor scanCursor head
+  }
+}

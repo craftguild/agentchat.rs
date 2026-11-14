@@ -1,0 +1,3 @@
+mutation Create($requestId: ID!, $name: String!) {
+  createChannel(requestId: $requestId, name: $name) { id: channelId name }
+}

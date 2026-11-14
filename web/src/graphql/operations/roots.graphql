@@ -1,0 +1,5 @@
+query Roots($channel: String!, $before: String, $snapshot: CheckpointInput, $limit: Int) {
+  roots(channel: $channel, before: $before, snapshot: $snapshot, limit: $limit) {
+    snapshot { ...CheckpointFields } nextBefore items { ...MessageFields }
+  }
+}

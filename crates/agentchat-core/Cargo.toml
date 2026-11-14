@@ -1,0 +1,32 @@
+[package]
+name = "agentchat-core"
+version.workspace = true
+publish.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+uuid.workspace = true
+thiserror.workspace = true
+chrono.workspace = true
+regex-automata.workspace = true
+regex-syntax.workspace = true
+oriha-core.workspace = true
+async-trait.workspace = true
+sha2.workspace = true
+tokio.workspace = true
+
+[dev-dependencies]
+proptest.workspace = true
+syn = { version = "=2.0.119", features = ["full", "visit"] }
+proc-macro2 = "=1.0.107"
+
+[[example]]
+name = "check-host-boundaries"
+path = "../../tools/host-boundary/main.rs"
+
+[lints]
+workspace = true
