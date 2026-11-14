@@ -1,0 +1,22 @@
+{
+  "schema_version": 2,
+  "group": "agentchat",
+  "config_hash": "a6efae228cb2bfc0e19bc3df6e8c8db7d97a07e402a9c1c8dfa9c5b122037d68",
+  "head": "1acce8619b35f4a56774443e7370b688d89bae94",
+  "base": null,
+  "current": "0.1.0",
+  "next": "0.1.0",
+  "tag": "v0.1.0",
+  "bump": "none",
+  "mode": "normal",
+  "prepared": false,
+  "receipt_path": "docs/releases/v0.1.0.json",
+  "notes": "# v0.1.0\n\nGroup: `agentchat`\n\nCompare: `repository root (initial release)` → `1acce8619b35f4a56774443e7370b688d89bae94`\n\n## Changes\n\n- feat: initial import (1acce8619b35f4a56774443e7370b688d89bae94)\n",
+  "changes": [
+    {
+      "path": "docs/releases/v0.1.0.md",
+      "before": null,
+      "after": "2cf2ffa472b19759f1a9f81bc2919e5d732a464daed446fb1e26e144b15d65ed"
+    }
+  ]
+}
